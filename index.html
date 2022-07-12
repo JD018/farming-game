@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<head>
+    <title>
+        Farming Game
+    </title>
+
+    <link rel="stylesheet" href="main.css">
+
+    <!-- <script src="setup.js"></script> -->
+    <script src="setup2.js"></script>
+</head>
+
+<html>
+    <body>
+        <div class="infoBar">
+            <a class="info0" id="money">$?</a>
+
+            <a class="info1" id="cropsGrowing">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;? Crops Growing</a>
+            <a class="info0">&nbsp;/&nbsp;</a>
+            <a class="info1" id="cropsMature">? Crops Mature&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+
+            <a class="info1" id="market">?%&nbsp;</a>
+            <img src="home.svg" class="icon">
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+            <img src="sunny.svg" class="weather0" id="weather0">
+            <span>&nbsp;</span>
+            <img src="sunny.svg" class="weather1" id="weather1">
+            <span>&nbsp;</span>
+            <img src="sunny.svg" class="weather2" id="weather2">
+            <span>&nbsp;</span>
+            <img src="sunny.svg" class="weather3" id="weather3">
+
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <img src="wind.svg" class="icon">
+            <a class="info1" id="windSpeed">&nbsp;?mph&nbsp;&nbsp;&nbsp;</a>
+
+            <table class="timeTable">
+                <tr><td class="info2" id="time">??:?? ??</td></tr>
+                <tr><td class="info3" id="date">?/?</td></tr>
+            </table>
+
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <button class="harvestButton" onclick="harvest()">HARVEST</button>
+
+            <!-- Debug -->
+            <!-- <button class="infoGrow0" onclick="reset()">Debug</button> -->
+            <!-- Debug End -->
+        </div>
+
+        <div class="sidebar">
+            <table>
+                <tr>
+                    <td>
+                        <button class="cropButton"><img src="wheat0.svg" class="cropGrow" onclick="buyWheat()"></button>
+                        <br>
+                        <p class="infoGrow0">WHEAT</p>
+                        <br>
+                        <p class="infoGrow1">$1</p> <!-- 10¢ -->
+                        <br>
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        <button class="cropButton"><img src="carrot0.svg" class="cropGrow" onclick="buyCarrots()"></button>
+                        <br>
+                        <p class="infoGrow0">CARROTS</p>
+                        <br>
+                        <p class="infoGrow1">$12</p>
+                        <br>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button class="cropButton"><img src="lettuce0.svg" class="cropGrow" onclick="buyLettuce()"></button>
+                        <br>
+                        <p class="infoGrow0">LETTUCE</p>
+                        <br>
+                        <p class="infoGrow1">$75</p>
+                        <br>
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        <button class="cropButton"><img src="corn0.svg" class="cropGrow" onclick="buyCorn()"></button>
+                        <br>
+                        <p class="infoGrow0">CORN</p>
+                        <br>
+                        <p class="infoGrow1">$300</p>
+                        <br>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button class="cropButton"><img src="potato0.svg" class="cropGrow" onclick="buyPotatoes()"></button>
+                        <br>
+                        <p class="infoGrow0">POTATOES</p>
+                        <br>
+                        <p class="infoGrow1">$1,000</p>
+                        <br>
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        <button class="cropButton"><img src="pepper0.svg" class="cropGrow" onclick="buyPeppers()"></button>
+                        <br>
+                        <p class="infoGrow0">PEPPERS</p>
+                        <br>
+                        <p class="infoGrow1">$8,000</p>
+                        <br>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button class="cropButton"><img src="onion0.svg" class="cropGrow" onclick="buyOnions()"></button>
+                        <br>
+                        <p class="infoGrow0">ONIONS</p>
+                        <br>
+                        <p class="infoGrow1">$22,000</p>
+                        <br>
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        <button class="cropButton"><img src="broccoli0.svg" class="cropGrow" onclick="buyBroccoli()"></button>
+                        <br>
+                        <p class="infoGrow0">BROCCOLI</p>
+                        <br>
+                        <p class="infoGrow1">$100,000</p>
+                        <br>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button class="cropButton"><img src="pumpkin0.svg" class="cropGrow" onclick="buyPumpkins()"></button>
+                        <br>
+                        <p class="infoGrow0">PUMPKINS</p>
+                        <br>
+                        <p class="infoGrow1">$230,000</p>
+                        <br>
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        <button class="cropButton"><img src="alienMushroom0.svg" class="cropGrow" onclick="buyAlienPlants()"></button>
+                        <br>
+                        <p class="infoGrow0">ALIEN PLANTS</p>
+                        <br>
+                        <p class="infoGrow1">$1,000,000</p>
+                        <br>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <button class="upgradeButton" onclick="upgrade()">UPGRADE</button>
+            <br>
+            <p class="infoGrow1" id="upgradeCost">$?</p>
+
+        </div>
+
+        <div class="content" id="content">
+            <table class="content1">
+                <tr>
+                    <td class="content1" id="0">
+                        <img class="plant" src="" id='0i'>
+                        <p class="des0" id="0n">Empty</p>
+                        <p class="des1" id="0t"></p>
+                    </td>
+                    <td class="content1" id="1">
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <img class="plant" src="" id="1i">
+                        <p class="des0" id="1n">Empty</p>
+                        <p class="des1" id="1t"></p>
+                    </td>
+                    <td class="content1" id="2">
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <img class="plant" src="" id="2i">
+                        <p class="des0" id="2n">Empty</p>
+                        <p class="des1" id="2t"></p>
+                    </td>
+                </tr>
+            </table>
+            <br><br>
+        </div>
+    </body>
+</html>
